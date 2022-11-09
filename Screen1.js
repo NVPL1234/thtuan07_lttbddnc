@@ -1,8 +1,7 @@
 import React, { useContext, createContext, useEffect } from 'react'
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, } from 'react-native';
 import InputForm from './component/InputForm';
-import Item from './component/Item';
-import Context from './Context';
+import Products from './component/Products';
 import { MyData } from './Context';
 import axios from 'axios'
 
@@ -11,12 +10,6 @@ export const NavigationContext = createContext()
 function Screen1_1() {
 
   const { products, dispatch } = useContext(MyData)
-
-  const renderItem = ({ item }) => {
-    return (
-      <Item id={item.id} name={item.name} url={item.url}></Item>
-    )
-  }
 
   useEffect(() => {
     
@@ -33,20 +26,16 @@ function Screen1_1() {
   return (
     <View style={styles.container}>
       <InputForm></InputForm>
-      <View style={{ marginTop: '1%', marginLeft: '1%' }}>
-        <FlatList data={products} renderItem={renderItem}></FlatList>
-      </View>
+      <Products></Products>
     </View>
   );
 }
 
 export default function Screen1({ navigation }) {
   return (
-    <Context>
       <NavigationContext.Provider value={{ navigation }}>
         <Screen1_1 />
-      </NavigationContext.Provider>      
-    </Context>
+      </NavigationContext.Provider>     
   )
 }
 

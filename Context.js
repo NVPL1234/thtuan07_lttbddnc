@@ -11,7 +11,7 @@ const reducer = (state, action) => {
         case 'ADD':
             return [...state, action.product]
         case 'DELETE':
-            return state = action.products 
+            return state = action.products
         default:
             break;
     }

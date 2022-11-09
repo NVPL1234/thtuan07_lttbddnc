@@ -27,6 +27,10 @@ export default function Item({ id, name, url }) {
         ])
     }
 
+    const updateItem = () => {
+        navigation.navigate('UpdateForm', {id})
+    }
+
     const itemOnPress = () => {
         const productsNew = products.filter((product) => id === product.id)
         navigation.navigate('Screen2', {productsNew})
@@ -41,6 +45,7 @@ export default function Item({ id, name, url }) {
             </TouchableOpacity>
             <View style={{ height: '100%', paddingTop: '5%' }}>
                 <Button title='Xoá' onPress={deleteItem}></Button>
+                <Button title='Cập nhật' onPress={updateItem}></Button>
             </View>
         </View>
     );
